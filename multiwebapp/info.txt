@@ -1,0 +1,1 @@
+This is having 2 webpages code and dockerfile where we have given the env variable x which will decide which webpage to be con figure in contianer and there is shell script which will copy the webpage content in document root.
