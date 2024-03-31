@@ -1,6 +1,8 @@
-FROM ubuntu as build
-RUN apt-get update && apt-get install -y python3 && apt install python3-pip
+FROM python:3.9 as build
 COPY . /code
-RUN pip install pipenv && pipenv install -r requirements.txt && pipenv shell && sudo apt-get install rabbitmq-server && service rabbitmq-server start
-
-CMD 
+WORKDIR /code/Hot-Food
+RUN pip3 install pipenv && pip3 install ta-lib && pipenv install -r requirements.txt && pipenv shell && apt-get update && apt-get install -y rabbitmq-server && service rabbitmq-server start
+WORKDIR /code/Hot-Food/src/
+CMD python manage.py makemigrations
+CMD python manage.py migrate
+CMD python manage.py runserver 
