@@ -1,0 +1,10 @@
+version: '3'
+services:
+  docker:
+    image: dockerincontianer:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+       PUBLIC_IP: ${PUBLIC_IP}
+    container_name: my_custom_container 
